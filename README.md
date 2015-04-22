@@ -1,0 +1,1 @@
+Python script to control torrents from a Transmission server. Deals with ratio sites, hit and runs, and off-peak hours.
