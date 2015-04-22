@@ -26,7 +26,7 @@ password = 'password'
 nopause = "/media/Downloads/NoPause"
 # completed, this is where torrents end up
 completed = "/media/Downloads/Completed"
-# ratio, use keephours and minratio for ratio sensitive private trackers, obeys pause hours
+# ratio, use keepseconds and minratio for ratio sensitive private trackers, obeys pause hours
 ratio = "/media/Downloads/Ratio"
 # rationopause, as above, no pause
 rationopause = "/media/Downloads/RatioNoPause"
@@ -34,7 +34,7 @@ rationopause = "/media/Downloads/RatioNoPause"
 seed = "/media/Downloads/Seed"
 
 # Number of hours to keep the torrent going
-keephours = 144 * 3600
+keepseconds = 144 * 3600
 # Minimum ratio to keep the torrent
 minratio = 10.05
 # Number of torrents to keep going at the same time
@@ -105,8 +105,8 @@ for torrent in torrents["arguments"]["torrents"]:
 				doneDate = nowDate
 
 			# Have we exceeded the minimum ratio or hit the keep time?
-			if torrent["uploadRatio"] > minratio or (nowDate - doneDate).total_seconds() > keephours:
-				print "....Hit ratio or keephours"
+			if torrent["uploadRatio"] > minratio or (nowDate - doneDate).total_seconds() > keepseconds:
+				print "....Hit ratio or keepseconds"
 				# Yes, does the file exist in the completed folder?
 				# Ratio is completed or hours exceeded and the file is already in the completed folder
 				if os.path.exists(completed + '/' + firstfile): # Completed file already exists
